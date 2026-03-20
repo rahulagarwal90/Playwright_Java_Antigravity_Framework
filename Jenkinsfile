@@ -12,6 +12,10 @@ pipeline {
         string(name: 'WORKERS', defaultValue: '2', description: 'Number of parallel workers')
     }
 
+    triggers {
+        cron('H 02 * * *') // Run every night at 2:00 AM
+    }
+
     environment {
         // Map parameters to environment variables
         BROWSER = "${params.BROWSER}"

@@ -70,9 +70,31 @@ Once Jenkins is running, you need to configure it to talk to Maven, Java, and Al
 
 ---
 
-## 4. Best Practices for Credentials
+## 4. Advanced System Configuration
 
-In a professional automation environment, security is paramount. Here is how to handle your Jenkins credentials:
+To enable professional features like **Green Status Checkmarks** on GitHub commits, you must introduce Jenkins to GitHub as a "Server."
+
+### A. GitHub Server (For Checkmarks & API)
+1.  Go to **Manage Jenkins** > **System**.
+2.  Scroll down to the **GitHub** section.
+3.  Click **Add GitHub Server**.
+    - **Name**: `GitHub`
+    - **API URL**: `https://api.github.com`
+    - **Credentials**: Click **Add** > **Jenkins**.
+      - **Kind**: Select `Secret text` (CRITICAL STEP).
+      - **Secret**: Paste your GitHub PAT.
+      - **ID**: `github-token`.
+4.  **Test Connection**: It should say "Credentials verified for user X".
+5.  Check **"Manage hooks"**.
+6.  Click **Save**.
+
+### B. Global Tool Configuration (Recap)
+Ensure the following names match your `Jenkinsfile` exactly:
+1. **JDK**: Name = `JDK 17`.
+2. **Maven**: Name = `Maven 3.8`.
+3. **Allure**: Name = `Allure` (Manage Jenkins > Tools > Allure Commandline).
+
+---
 
 ### A. Jenkins Admin Account (Web UI)
 - **Password Manager**: Use a tool like **LastPass**, **1Password**, or **Dashlane**.
@@ -135,9 +157,18 @@ Jenkins needs a way to "talk" to GitHub. Even if your repo is public, using a **
 
 ---
 
-## 6. Monitoring & Debugging Your First Run
+## 7. Monitoring & Debugging Your First Run
 
-Once you click **"Build Now"** (or Jenkins scans your repo), follow these steps to see the results:
+### A. Parameterized Builds (Pro Feature)
+Since we added the `parameters` block to the `Jenkinsfile`, you can now control your tests from the UI!
+1. Click on your job/branch.
+2. Click **"Build with Parameters"** in the left menu.
+3. Choose your **Browser** (Chrome/Firefox/Webkit).
+4. Type your **Tags** (e.g., `@SauceDemo`).
+5. Click **Build**.
+
+### B. Standard Monitoring
+Once you click **"Build Now"** (or Jenkins scans your repo), follow these steps:
 
 1. **View the Logs**:
    - Click on your branch (e.g., `main`).
@@ -154,7 +185,7 @@ Once you click **"Build Now"** (or Jenkins scans your repo), follow these steps 
 
 ---
 
-## 7. Troubleshooting: Password Management (Google Chrome)
+## 8. Troubleshooting: Password Management (Google Chrome)
 
 If Google Password Manager does not save your Jenkins credentials for `localhost`, follow these steps:
 
