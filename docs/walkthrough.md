@@ -35,7 +35,8 @@ Jenkins now successfully reports status back to GitHub. Even when a build fails 
    - **Jenkins Sync**: Jenkins will automatically detect that the branch is gone and remove its pipeline from the "Branches" tab within a few minutes.
 
 ### Troubleshooting
-- **Bad Credentials**: If you see a **401 error**, follow the "Recovery Guide" in [`docs/jenkins_setup.md`](file:///e:/Playwright_Java_Antigravity_framework/docs/jenkins_setup.md#8-troubleshooting-bad-credentials-401-error).
+> [!TIP]
+> **Manual Synchronization (Localhost)**: Since your Jenkins is running on `localhost`, GitHub cannot "poke" it automatically. If you delete a branch or raise a PR and Jenkins doesn't see it, simply click **"Scan Repository Now"** on your job's main page in Jenkins.
 
 ---
 🎉 Your framework is now production-ready and fully automated!
