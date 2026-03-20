@@ -62,7 +62,7 @@ This guide provides step-by-step instructions for installing Jenkins, configurin
 2. **Branch pattern**: `main`.
 3. Check: **"Require a pull request before merging"**.
 4. Check: **"Require status checks to pass before merging"**.
-5. Search for your Jenkins job name and select it.
+5. Search for `continuous-integration/jenkins/branch` and click it in the dropdown.
 
 ---
 
@@ -125,3 +125,10 @@ If Chrome won't save your `localhost:8080` password, use the **Hosts Workaround*
 | **Custom Run** | **Build with Parameters** |
 
 ---
+
+## 11. Cleaning up Old Branches
+
+When you merge a PR and delete the branch on GitHub, Jenkins will clean up automatically:
+1. **GitHub**: Click "Delete Branch" after merging.
+2. **Jenkins**: Click "Scan Multibranch Pipeline Now" on the job dashboard.
+3. Jenkins will move the deleted branch to "Orphaned Items" and eventually delete it based on the job configuration.
