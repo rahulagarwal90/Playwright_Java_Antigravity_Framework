@@ -42,7 +42,7 @@ pipeline {
                     if (isUnix()) {
                         sh "mvn clean test -Dbrowser.headless=true -Dbrowser=${env.BROWSER} -Dcucumber.filter.tags=${env.TAGS} -Dworkers=${env.WORKERS}"
                     } else {
-                        bat "mvn clean test -Dbrowser.headless=true -Dbrowser=${env.BROWSER} -p -Dcucumber.filter.tags=${env.TAGS} -Dworkers=${env.WORKERS}"
+                        bat "mvn clean test -Dbrowser.headless=true -Dbrowser=${env.BROWSER} -Dcucumber.filter.tags=${env.TAGS} -Dworkers=${env.WORKERS}"
                     }
                 }
             }
