@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# Playwright_Java_Antigravity_Framework
-Framework created by Google Antigravity for DemoQa and SauceDemo websites in Java
-=======
 # Playwright Java BDD Automation Framework
 
 A robust, industry-ready **Playwright** automation framework written in **Java** utilizing **Cucumber BDD** for clear, readable test scenarios.
@@ -84,7 +80,7 @@ Allure provides a visual, step-by-step breakdown of test execution.
 
 ### C. Surefire Reports (Raw Data)
 - **Location**: `target/surefire-reports/`
-- Contains XML and text files used by CI/CD tools (like Jenkins) to track pass/fail statistics.
+- Contains XML and text files used by CI/CD tools (like Jenkins or Azure DevOps) to track pass/fail statistics.
 
 ## 5. Artifact Collection
 - **Execution Videos**: `target/videos/`
@@ -110,4 +106,3 @@ The framework includes a pre-configured `Jenkinsfile`.
    - **Cross-Platform**: Automatically detects and runs on Windows or Linux agents.
    - **Artifacts**: Automatically archives test videos, screenshots, and traces.
    - **Reporting**: Generates both Allure and JUnit (Surefire) reports after every run.
->>>>>>> 5632a71 (Initial commit of Playwright Java BDD Framework with Allure and Log4j2)
