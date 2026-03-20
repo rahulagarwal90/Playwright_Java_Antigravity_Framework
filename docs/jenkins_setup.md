@@ -61,17 +61,42 @@ This guide provides step-by-step instructions for installing Jenkins, configurin
 1. Go to GitHub > **Settings** > **Branches** > **Add branch protection rule**.
 2. **Branch pattern**: `main`.
 3. Check: **"Require a pull request before merging"**.
-4. Check: **"Require status checks to pass before merging"**.
-5. Search for `continuous-integration/jenkins/branch` and click it in the dropdown.
+5. **How to find the Status Checks**:
+   - Type `jenkins` and wait for the dropdown.
+   - **REQUIRED**: Select both `continuous-integration/jenkins/branch` AND `continuous-integration/jenkins/pr-head`.
+   - *Note: If you don't see them, run the Jenkins job manually once.*
+
+### C. Optional: Webhooks via ngrok
+If you want **instant** triggers (instead of waiting for the 5-min poll):
+1. Download [ngrok](https://ngrok.com/).
+2. Run: `ngrok http 8080`.
+3. Copy the `https://...` URL and use it in Step 5A above.
 
 ---
 
 ## 6. Nightly Scheduling (Automated Runs)
 
 The framework runs a full suite every night at **2:00 AM**.
-- This is managed via the `Jenkinsfile` under `triggers { cron('H 02 * * *') }`.
-- **Note on the `H` (Hash)**: In Jenkins, `H` stands for "Hash". Instead of starting exactly at 2:00:00 AM (which could overload the server), it tells Jenkins to pick a random minute between 2:00 AM and 2:59 AM. This is a professional best practice to balance server load.
 - In Jenkins, these will show as **"Started by timer"**.
+
+---
+
+## 7. Localhost Automation (No-Click Sync)
+
+Since you are running on `localhost`, Jenkins normally can't "hear" GitHub. We have two ways to fix this:
+
+### A. Automatic Polling (Already in Jenkinsfile)
+The `Jenkinsfile` is now set to `pollSCM('H/5 * * * *')`. 
+- Every 5 minutes, Jenkins will "ask" GitHub if there is new code on the current branch.
+
+### B. Discovering New Branches & PRs
+To make Jenkins "find" your new branches automatically:
+1. Go to your Job Dashboard > **Configure**.
+2. Scroll to **Scan Multibranch Pipeline Triggers**.
+3. Check: **"Periodically if not otherwise run"**.
+4. Interval: **1 minute** or **2 minutes**.
+5. **Save**.
+   - *Result: Jenkins will now automatically scan for new PRs/Branches without you clicking "Scan".*
 
 ---
 
