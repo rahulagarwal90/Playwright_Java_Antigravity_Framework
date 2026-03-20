@@ -6,9 +6,17 @@ pipeline {
         jdk 'JDK 17'      // Configure in Jenkins Global Tool Configuration
     }
 
+    parameters {
+        choice(name: 'BROWSER', choices: ['chrome', 'firefox', 'webkit'], description: 'Select the browser for test execution')
+        string(name: 'TAGS', defaultValue: '@SauceDemo', description: 'Enter the Cucumber tags to execute (e.g., @SauceDemo)')
+        string(name: 'WORKERS', defaultValue: '2', description: 'Number of parallel workers')
+    }
+
     environment {
-        // Optional: define number of workers for parallel execution
-        WORKERS = '2'
+        // Map parameters to environment variables
+        BROWSER = "${params.BROWSER}"
+        TAGS = "${params.TAGS}"
+        WORKERS = "${params.WORKERS}"
     }
 
     stages {
@@ -28,9 +36,9 @@ pipeline {
             steps {
                 script {
                     if (isUnix()) {
-                        sh "mvn clean test -Dworkers=${env.WORKERS}"
+                        sh "mvn clean test -Dbrowser.headless=true -Dbrowser=${env.BROWSER} -Dcucumber.filter.tags=${env.TAGS} -Dworkers=${env.WORKERS}"
                     } else {
-                        bat "mvn clean test -Dworkers=${env.WORKERS}"
+                        bat "mvn clean test -Dbrowser.headless=true -Dbrowser=${env.BROWSER} -p -Dcucumber.filter.tags=${env.TAGS} -Dworkers=${env.WORKERS}"
                     }
                 }
             }

@@ -117,6 +117,22 @@ Jenkins needs a way to "talk" to GitHub. Even if your repo is public, using a **
   3. If tests pass, the PR can be merged.
   4. If tests fail, Allure reports will show exactly what went wrong.
 
+### C. GitHub Branch Protection (The Gatekeeper)
+
+1. Go to your GitHub Repository > **Settings** > **Branches**.
+2. Click **Add branch protection rule**.
+3. **Branch name pattern**: Type `main`.
+4. **Settings to Check**:
+   - [x] **Require a pull request before merging**: This prevents direct pushes to `main`.
+   - [x] **Require status checks to pass before merging**: This is the most important part!
+5. **How to find the Status Check**:
+   - After checking the box above, a search bar appears.
+   - Type the name of your Jenkins job (e.g., `Playwright-Java-Antigravity...`).
+   - *Note: If you don't see it, run the Jenkins job once. GitHub needs to "see" a result before it allows you to select it.*
+6. Click **Create** at the bottom.
+
+**Result**: Now, the "Merge" button on GitHub will be **blocked** until Jenkins gives a green checkmark!
+
 ---
 
 ## 6. Monitoring & Debugging Your First Run
