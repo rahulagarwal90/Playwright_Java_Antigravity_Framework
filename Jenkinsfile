@@ -13,7 +13,8 @@ pipeline {
     }
 
     triggers {
-        cron('H 02 * * *') // Run every night at 2:00 AM
+        cron('H 02 * * *')     // Nightly run at 2 AM
+        pollSCM('H/5 * * * *') // Localhost Auto-trigger: Check for changes every 5 mins
     }
 
     environment {
