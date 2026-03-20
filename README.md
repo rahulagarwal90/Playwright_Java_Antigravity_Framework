@@ -71,7 +71,7 @@ Allure provides a visual, step-by-step breakdown of test execution.
   ```
 
 - **Alternative 1: Static Generation**:
-  Use this if you just want to generate the HTML files without opening them.
+  Use this if you just want to generate the HTML Verified with automated Jenkins CI/CD pipeline. (Final Verification Run)
   ```bash
   mvn allure:report
   ```
