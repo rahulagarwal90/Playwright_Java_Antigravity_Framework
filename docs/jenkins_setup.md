@@ -58,8 +58,15 @@ Once Jenkins is running, you need to configure it to talk to Maven, Java, and Al
 In a professional automation environment, security is paramount. Here is how to handle your Jenkins credentials:
 
 ### A. Jenkins Admin Account (Web UI)
-- **Password Manager**: Use a tool like **LastPass**, **1Password**, or **Dashlane**. Never store passwords in plain text or Excel files.
-- **SSO/LDAP (Industry Standard)**: In real-world company setups, Jenkins is linked to the company's **Active Directory**. You log in with your corporate email/password, so no separate Jenkins password is managed.
+- **Password Manager**: Use a tool like **LastPass**, **1Password**, or **Dashlane**.
+- **Google Password Manager Note**: Google often blocks saving passwords for `localhost`.
+  - **The Fix**: Alias `localhost` to a "real" name in your Windows hosts file.
+  - **Steps**:
+    1. Open Notepad as **Administrator**.
+    2. Open `C:\Windows\System32\drivers\etc\hosts`.
+    3. Add: `127.0.0.1  jenkins.local`
+    4. Access Jenkins at `http://jenkins.local:8080`. Google will now save your password!
+- **SSO/LDAP (Industry Standard)**: In corporate setups, Jenkins is linked to Active Directory for single-login security.
 
 ### B. Project Secrets (GitHub Tokens, API Keys)
 - **Jenkins Credential Store**: Never hardcode secrets in your `pom.xml`, `config.properties`, or `Jenkinsfile`.
@@ -70,6 +77,9 @@ In a professional automation environment, security is paramount. Here is how to 
 
 ### C. The `initialAdminPassword`
 - This file is **temporary**. Once you create your first admin user during the setup wizard, you should delete this file or simply ignore it, as it will no longer be valid.
+---
+
+## 4. Pull Request (PR) Workflow Setup
 
 ### A. GitHub Webhook
 1. Go to your GitHub Repository > **Settings** > **Webhooks**.
