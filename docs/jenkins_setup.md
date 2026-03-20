@@ -100,7 +100,7 @@ To make Jenkins "find" your new branches automatically:
 
 ---
 
-## 7. Monitoring & Custom Builds
+## 8. Monitoring & Custom Builds
 
 ### A. Build with Parameters
 If you have fixed your credentials, you will see **"Build with Parameters"** in the left menu.
@@ -114,7 +114,7 @@ If you have fixed your credentials, you will see **"Build with Parameters"** in 
 
 ---
 
-## 8. Troubleshooting: Bad Credentials (401 Error)
+## 9. Troubleshooting: Bad Credentials (401 Error)
 
 If you see `org.kohsuke.github.HttpException: {"message": "Bad credentials"}`, follow this:
 
@@ -130,7 +130,7 @@ If you see `org.kohsuke.github.HttpException: {"message": "Bad credentials"}`, f
 
 ---
 
-## 9. Troubleshooting: Password Management (Localhost)
+## 10. Troubleshooting: Password Management (Localhost)
 
 If Chrome won't save your `localhost:8080` password, use the **Hosts Workaround**:
 1. Edit `C:\Windows\System32\drivers\etc\hosts`.
@@ -139,7 +139,7 @@ If Chrome won't save your `localhost:8080` password, use the **Hosts Workaround*
 
 ---
 
-## 10. Navigating the Jenkins UI: Cheat Sheet
+## 11. Navigating the Jenkins UI: Cheat Sheet
 
 | To see this... | Go here... |
 | :--- | :--- |
@@ -151,7 +151,7 @@ If Chrome won't save your `localhost:8080` password, use the **Hosts Workaround*
 
 ---
 
-## 11. Cleaning up Old Branches
+## 12. Cleaning up Old Branches
 
 When you merge a PR and delete the branch on GitHub, Jenkins will clean up automatically:
 1. **GitHub**: Click "Delete Branch" after merging.
