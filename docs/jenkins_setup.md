@@ -37,6 +37,11 @@ Once Jenkins is running, you need to configure it to talk to Maven, Java, and Al
 3. **Maven**:
    - Name: `Maven 3.8` (must match the name in your `Jenkinsfile`).
    - Click "Install automatically" or provide the path to your local Maven.
+4. **Allure Commandline**:
+   - Scroll down to **Allure Commandline installations**.
+   - Click **Add Allure Commandline**.
+   - **Name**: `Allure` (This is the standard name).
+   - Click **Install automatically** and select the latest version from Maven Central.
 
 ---
 
@@ -109,10 +114,27 @@ Jenkins needs a way to "talk" to GitHub. Even if your repo is public, using a **
 - **`main`**: Protected branch. No direct commits allowed.
 - **Feature Branches (`feature/login`, `feature/cart`)**: Developers work here.
 - **The Process**:
-  1. Create a PR from `feature` to `main`.
-  2. Jenkins **automatically** detects the PR and runs `mvn clean test`.
   3. If tests pass, the PR can be merged.
   4. If tests fail, Allure reports will show exactly what went wrong.
+
+---
+
+## 5. Monitoring & Debugging Your First Run
+
+Once you click **"Build Now"** (or Jenkins scans your repo), follow these steps to see the results:
+
+1. **View the Logs**:
+   - Click on your branch (e.g., `main`).
+   - Click on the latest build number (e.g., `#1`).
+   - Click **"Console Output"** on the left menu. This is where you see the live Maven and Playwright logs.
+2. **Verify Playwright Browsers**:
+   - The first run will take longer because Jenkins is downloading the browsers (Chromium, Firefox, etc.).
+   - If this stage fails, ensure your Jenkins machine has internet access.
+3. **View Allure Reports**:
+   - Once the build finishes, you will see an **"Allure Report"** icon on the job page.
+   - Click it to see the visual dashboard of your test results!
+4. **Archive Artifacts**:
+   - Look for the **"Last Successful Artifacts"** section. You can download the videos and traces directly from here to debug failures.
 
 ---
 
