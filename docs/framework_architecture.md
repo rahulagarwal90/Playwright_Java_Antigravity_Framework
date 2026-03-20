@@ -49,7 +49,7 @@ Centralized logging via `src/main/resources/log4j2.xml`:
 - **File Appender**: Full history saved in `target/logs/framework.log`.
 - Tracks Thread ID to distinguish between parallel scenario runs.
 
-### Reporting Strategy
+## 3. Reporting Architecture
 The framework generates three layers of reports:
 1. **Allure Report**:
    - Best for visual step-by-step analysis.

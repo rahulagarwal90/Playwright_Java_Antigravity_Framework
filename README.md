@@ -63,16 +63,26 @@ This framework provides multiple types of reports:
 
 ### A. Allure Report (Advanced)
 Allure provides a visual, step-by-step breakdown of test execution.
-- **Generate & View (Recommended)**:
+
+- **The "One-Step" Command (Generate & Open)**:
+  This is the easiest way to view your results. It generates a temporary report and automatically opens it in your default browser.
   ```bash
   mvn allure:serve
   ```
-  *This generates a temporary report and opens it in your default browser.*
-- **Generate Static Report**:
+
+- **Alternative 1: Static Generation**:
+  Use this if you just want to generate the HTML files without opening them.
   ```bash
   mvn allure:report
   ```
-  *Report will be located in `target/site/allure-maven-plugin/index.html`.*
+  *Location: `target/site/allure-maven-plugin/index.html`*
+
+- **Alternative 2: Standard Allure CLI** (If Allure is installed globally):
+  ```bash
+  allure serve target/allure-results
+  ```
+
+- **Detailed Documentation**: See [Reporting Architecture](docs/framework_architecture.md#3-reporting-architecture) for more details.
 
 ### B. Cucumber HTML Report (Standard)
 - **Location**: `target/cucumber-reports.html`
@@ -100,8 +110,5 @@ Allure provides a visual, step-by-step breakdown of test execution.
 
 ### Jenkins Configuration
 The framework includes a pre-configured `Jenkinsfile`.
-- **Full Setup Guide**: See [Jenkins Setup & PR Guide](docs/jenkins_setup.md) for detailed installation and configuration steps.
-- **Features**:
-   - **Cross-Platform**: Automatically detects and runs on Windows or Linux agents.
-   - **Artifacts**: Automatically archives test videos, screenshots, and traces.
-   - **Reporting**: Generates both Allure and JUnit (Surefire) reports after every run.
+- **Full Setup Guide**: See [Jenkins Setup & PR Guide](docs/jenkins_setup.md) for detailed installation.
+- **Architecture Overview**: See our [Technical Architecture Guide](docs/framework_architecture.md) for deep-dive technical details.
