@@ -41,6 +41,15 @@ public interface FrameworkConfig extends Config {
 // Access:
 FrameworkConfigManager.getConfig().browserHeadless();
 ```
+
+---
+
+### Configuration as Code (CasC)
+In professional DevOps, we follow the principle of **Configuration as Code**.
+- **In-Repo Config**: Settings like `browser`, `workers`, and `timeout` are stored in `config.properties`.
+- **Why?**: This ensures that anyone who clones the code (including Jenkins) gets the exact same environment. It also allows you to track "who changed what" in the Git history.
+- **Jenkins Role**: Jenkins should only manage **Environment Overrides** (e.g., switching from `QA` to `Staging`) and **Secrets** (see below).
+
 ---
 
 ### Logging System (Log4j2)
