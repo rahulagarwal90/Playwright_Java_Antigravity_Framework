@@ -64,7 +64,20 @@ The framework generates three layers of reports:
 
 ---
 
-## 3. FAQs
+## 4. Pull Request (PR) Strategy & Code Quality
+
+To maintain a stable automation suite, we follow a strict branching and PR process:
+
+1. **Feature Branching**: Every new test or fix is developed in a separate branch (e.g., `feature/demo-qa-updates`).
+2. **Automated PR Triggers**:
+   - Once a PR is opened, Jenkins triggers the `Jenkinsfile` pipeline.
+   - Tests run in parallel (default 2 workers).
+   - **Gatekeeper**: The PR cannot be merged into `main` unless all tests pass.
+3. **Traceability**: Allure reports and Playwright traces are archived for every PR run to assist in debugging failed tests before they reach the main branch.
+
+---
+
+## 5. FAQs
 
 ### Q: Is `allure.properties` the industry standard?
 **A:** Yes, it is a very common practice. 

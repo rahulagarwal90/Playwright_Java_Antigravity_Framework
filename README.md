@@ -100,9 +100,8 @@ Allure provides a visual, step-by-step breakdown of test execution.
 
 ### Jenkins Configuration
 The framework includes a pre-configured `Jenkinsfile`.
-1. **Requirements**: Allure Jenkins Plugin, Maven & JDK 17 configured.
-2. **Setup**: Create a "Pipeline" job pointing to your Git repository.
-3. **Features**:
+- **Full Setup Guide**: See [Jenkins Setup & PR Guide](docs/jenkins_setup.md) for detailed installation and configuration steps.
+- **Features**:
    - **Cross-Platform**: Automatically detects and runs on Windows or Linux agents.
    - **Artifacts**: Automatically archives test videos, screenshots, and traces.
    - **Reporting**: Generates both Allure and JUnit (Surefire) reports after every run.
