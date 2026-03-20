@@ -70,7 +70,7 @@ Once Jenkins is running, you need to configure it to talk to Maven, Java, and Al
 
 ---
 
-## 5. Best Practices for Credentials
+## 4. Best Practices for Credentials
 
 In a professional automation environment, security is paramount. Here is how to handle your Jenkins credentials:
 
@@ -100,7 +100,7 @@ Jenkins needs a way to "talk" to GitHub. Even if your repo is public, using a **
 - This file is **temporary**. Once you create your first admin user during the setup wizard, you should delete this file or simply ignore it, as it will no longer be valid.
 ---
 
-## 4. Pull Request (PR) Workflow Setup
+## 5. Pull Request (PR) Workflow Setup
 
 ### A. GitHub Webhook
 1. Go to your GitHub Repository > **Settings** > **Webhooks**.
@@ -119,7 +119,7 @@ Jenkins needs a way to "talk" to GitHub. Even if your repo is public, using a **
 
 ---
 
-## 5. Monitoring & Debugging Your First Run
+## 6. Monitoring & Debugging Your First Run
 
 Once you click **"Build Now"** (or Jenkins scans your repo), follow these steps to see the results:
 
@@ -138,7 +138,7 @@ Once you click **"Build Now"** (or Jenkins scans your repo), follow these steps 
 
 ---
 
-## 6. Troubleshooting: Password Management (Google Chrome)
+## 7. Troubleshooting: Password Management (Google Chrome)
 
 If Google Password Manager does not save your Jenkins credentials for `localhost`, follow these steps:
 

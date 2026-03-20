@@ -50,6 +50,11 @@ In professional DevOps, we follow the principle of **Configuration as Code**.
 - **Why?**: This ensures that anyone who clones the code (including Jenkins) gets the exact same environment. It also allows you to track "who changed what" in the Git history.
 - **Jenkins Role**: Jenkins should only manage **Environment Overrides** (e.g., switching from `QA` to `Staging`) and **Secrets** (see below).
 
+### Secrets Management
+Sensitive data (Passwords, GitHub Tokens, API Keys) should **never** be stored in Git.
+- **The Process**: Store them in the **Jenkins Credentials Store**.
+- **Implementation**: The `Jenkinsfile` then pulls these secrets and injects them as environment variables during execution. This keeps them masked (`****`) in all logs.
+
 ---
 
 ### Logging System (Log4j2)
