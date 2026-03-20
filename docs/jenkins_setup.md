@@ -70,6 +70,7 @@ This guide provides step-by-step instructions for installing Jenkins, configurin
 
 The framework runs a full suite every night at **2:00 AM**.
 - This is managed via the `Jenkinsfile` under `triggers { cron('H 02 * * *') }`.
+- **Note on the `H` (Hash)**: In Jenkins, `H` stands for "Hash". Instead of starting exactly at 2:00:00 AM (which could overload the server), it tells Jenkins to pick a random minute between 2:00 AM and 2:59 AM. This is a professional best practice to balance server load.
 - In Jenkins, these will show as **"Started by timer"**.
 
 ---
