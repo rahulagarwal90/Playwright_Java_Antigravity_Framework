@@ -43,13 +43,25 @@ Once Jenkins is running, you need to configure it to talk to Maven, Java, and Al
 ## 3. Creating the Pipeline Job
 
 1. Click **New Item**.
-2. Name it `Playwright-Framework-Pipeline`.
-3. Select **Pipeline** (or **Multibranch Pipeline** for PR support).
-4. Under **Pipeline** section:
-   - Definition: `Pipeline script from SCM`.
-   - SCM: `Git`.
-   - Repository URL: `https://github.com/rahulagarwal90/Playwright_Java_Antigravity_Framework`.
-   - Script Path: `Jenkinsfile`.
+2. Name it `Playwright-Java-Antigravity-Framework-Pipeline`.
+3. Choose your job type:
+
+### Option A: Regular Pipeline (Simplest)
+*Best for a single branch (e.g., just `main`).*
+1. Select **Pipeline** and click OK.
+2. Scroll to the **Pipeline** section at the bottom.
+3. Definition: `Pipeline script from SCM`.
+4. SCM: `Git`.
+5. Repository URL: `https://github.com/rahulagarwal90/Playwright_Java_Antigravity_Framework`.
+6. Script Path: `Jenkinsfile`.
+
+### Option B: Multibranch Pipeline (Pro / For PRs)
+*Best for running tests on every branch and Pull Request.*
+1. Select **Multibranch Pipeline** and click OK.
+2. Go to the **Branch Sources** section.
+3. Click **Add source** > **GitHub** (or Git).
+4. Repository HTTPS URL: `https://github.com/rahulagarwal90/Playwright_Java_Antigravity_Framework`.
+5. Jenkins will now automatically find the `Jenkinsfile` in **all** your branches and run them!
 
 ---
 
@@ -63,11 +75,21 @@ In a professional automation environment, security is paramount. Here is how to 
 - **SSO/LDAP (Industry Standard)**: In corporate setups, Jenkins is linked to Active Directory for single-login security.
 
 ### B. Project Secrets (GitHub Tokens, API Keys)
-- **Jenkins Credential Store**: Never hardcode secrets in your `pom.xml`, `config.properties`, or `Jenkinsfile`.
-- **How to Use**:
-  1. Go to **Manage Jenkins** > **Credentials**.
-  2. Add your secret as a "Secret text" or "Username with password".
-  3. Reference them in your `Jenkinsfile` using environment variables. This ensures they are **masked** (shown as `****`) in the logs.
+Jenkins needs a way to "talk" to GitHub. Even if your repo is public, using a **Token** is the professional way to avoid rate limits and handle private repos.
+
+#### Step 1: Create a GitHub Token
+1. Go to your **GitHub Settings** > **Developer Settings** > **Personal access tokens** > **Tokens (classic)**.
+2. Click **Generate new token (classic)**.
+3. Select the `repo` scope.
+4. Copy the token (you will only see it once!).
+
+#### Step 2: Add to Jenkins
+1. In Jenkins, go to **Manage Jenkins** > **Credentials** > **System** > **Global credentials** > **Add Credentials**.
+2. **Kind**: `Username with password`.
+3. **Username**: Your GitHub username.
+4. **Password**: The **Token** you copied from GitHub.
+5. **ID**: `github-creds` (This is very important for your `Jenkinsfile`).
+6. Click **Create**.
 
 ### C. The `initialAdminPassword`
 - This file is **temporary**. Once you create your first admin user during the setup wizard, you should delete this file or simply ignore it, as it will no longer be valid.
