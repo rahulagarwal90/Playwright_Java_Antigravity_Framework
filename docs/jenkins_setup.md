@@ -98,6 +98,9 @@ To make Jenkins "find" your new branches automatically:
 5. **Save**.
    - *Result: Jenkins will now automatically scan for new PRs/Branches without you clicking "Scan".*
 
+> [!TIP]
+> **Why both?** Section B is the "Recruiter" (it finds new branches). Section A is the "Upkeep" (it checks existing branches). While slightly redundant, having both ensures maximum reliability on localhost!
+
 ---
 
 ## 8. Monitoring & Custom Builds
