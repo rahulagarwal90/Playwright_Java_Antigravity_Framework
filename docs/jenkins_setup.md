@@ -59,13 +59,7 @@ In a professional automation environment, security is paramount. Here is how to 
 
 ### A. Jenkins Admin Account (Web UI)
 - **Password Manager**: Use a tool like **LastPass**, **1Password**, or **Dashlane**.
-- **Google Password Manager Note**: Google often blocks saving passwords for `localhost`.
-  - **The Fix**: Alias `localhost` to a "real" name in your Windows hosts file.
-  - **Steps**:
-    1. Open Notepad as **Administrator**.
-    2. Open `C:\Windows\System32\drivers\etc\hosts`.
-    3. Add: `127.0.0.1  jenkins.local`
-    4. Access Jenkins at `http://jenkins.local:8080`. Google will now save your password!
+  - *Note: If Google Password Manager won't save your password for `localhost`, see the **[Troubleshooting guide](#6-troubleshooting-password-management-google-chrome)** at the bottom.*
 - **SSO/LDAP (Industry Standard)**: In corporate setups, Jenkins is linked to Active Directory for single-login security.
 
 ### B. Project Secrets (GitHub Tokens, API Keys)
@@ -97,3 +91,21 @@ In a professional automation environment, security is paramount. Here is how to 
   2. Jenkins **automatically** detects the PR and runs `mvn clean test`.
   3. If tests pass, the PR can be merged.
   4. If tests fail, Allure reports will show exactly what went wrong.
+
+---
+
+## 6. Troubleshooting: Password Management (Google Chrome)
+
+If Google Password Manager does not save your Jenkins credentials for `localhost`, follow these steps:
+
+### The "Hosts" Workaround
+1. **Open Notepad as Administrator**:
+   - Press Windows Key, type **Notepad**, right-click it, and select **Run as administrator**.
+2. **Open the Hosts File**:
+   - Go to `File > Open` and go to `C:\Windows\System32\drivers\etc\hosts`.
+   - *Note: You must set the file filter to "All Files (*.*)" to see it.*
+3. **Add the Alias**:
+   - At the bottom of the file, add: `127.0.0.1  jenkins.local`
+   - Save the file (**Ctrl + S**).
+4. **Result**:
+   - Use `http://jenkins.local:8080` in your browser. Google will now treat it as a real site and sync your passwords!
