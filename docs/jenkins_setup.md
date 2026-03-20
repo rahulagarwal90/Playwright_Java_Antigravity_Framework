@@ -53,7 +53,23 @@ Once Jenkins is running, you need to configure it to talk to Maven, Java, and Al
 
 ---
 
-## 4. Pull Request (PR) Workflow Setup
+## 5. Best Practices for Credentials
+
+In a professional automation environment, security is paramount. Here is how to handle your Jenkins credentials:
+
+### A. Jenkins Admin Account (Web UI)
+- **Password Manager**: Use a tool like **LastPass**, **1Password**, or **Dashlane**. Never store passwords in plain text or Excel files.
+- **SSO/LDAP (Industry Standard)**: In real-world company setups, Jenkins is linked to the company's **Active Directory**. You log in with your corporate email/password, so no separate Jenkins password is managed.
+
+### B. Project Secrets (GitHub Tokens, API Keys)
+- **Jenkins Credential Store**: Never hardcode secrets in your `pom.xml`, `config.properties`, or `Jenkinsfile`.
+- **How to Use**:
+  1. Go to **Manage Jenkins** > **Credentials**.
+  2. Add your secret as a "Secret text" or "Username with password".
+  3. Reference them in your `Jenkinsfile` using environment variables. This ensures they are **masked** (shown as `****`) in the logs.
+
+### C. The `initialAdminPassword`
+- This file is **temporary**. Once you create your first admin user during the setup wizard, you should delete this file or simply ignore it, as it will no longer be valid.
 
 ### A. GitHub Webhook
 1. Go to your GitHub Repository > **Settings** > **Webhooks**.
