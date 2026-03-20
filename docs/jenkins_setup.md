@@ -127,7 +127,8 @@ Jenkins needs a way to "talk" to GitHub. Even if your repo is public, using a **
 ### A. GitHub Webhook
 1. Go to your GitHub Repository > **Settings** > **Webhooks**.
 2. Click **Add webhook**.
-3. Payload URL: `http://<your-jenkins-url>/github-webhook/`.
+3. Payload URL: `http://<your-public-ip-or-ngrok-url>/github-webhook/`
+   - *Note: If Jenkins is on your local machine (`jenkins.local`), GitHub cannot reach it. You will need a tool like **ngrok** to expose your local Jenkins to the internet.*
 4. Events: Select "Let me select individual events" and check:
    - Pushes
    - Pull Requests
